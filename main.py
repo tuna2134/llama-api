@@ -26,7 +26,7 @@ model = llamacpp.PyLLAMA(params)
 @app.get("/")
 async def llama(promps: str):
     model.add_bos()     # Adds "beginning of string" token
-    model.update_input("A llama is a")
+    model.update_input(promps)
     model.print_startup_stats()
     model.prepare_context()
 
