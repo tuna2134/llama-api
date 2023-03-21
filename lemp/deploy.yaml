@@ -9,6 +9,8 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 8080
+  clusterIP: 10.48.291.481
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
