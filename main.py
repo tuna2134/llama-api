@@ -40,4 +40,4 @@ async def llama(promps: str):
             break
 
     model.print_end_stats()
-    return content
+    return {"content": content}
