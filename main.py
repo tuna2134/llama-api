@@ -11,7 +11,7 @@ model = None
 @app.on_event("startup")
 async def llama_start():
     params = llamacpp.gpt_params(
-        './ggml-model-q4_0.bin',  # model,
+        './ggml-alpaca-7b-q4.bin',  # model,
         512,  # ctx_size
         100,  # n_predict
         40,  # top_k
