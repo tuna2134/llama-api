@@ -17,7 +17,6 @@ metadata:
   labels:
     app: llama-api
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: llamaapi
