@@ -20,11 +20,11 @@ params = llamacpp.gpt_params(
     64,  # repeat_last_n
     8,  # batch_size
 )
-model = llamacpp.PyLLAMA(params)
 
 
 @app.get("/")
 async def llama(promps: str):
+    model = llamacpp.PyLLAMA(params)
     model.add_bos()     # Adds "beginning of string" token
     model.update_input(promps)
     model.print_startup_stats()
