@@ -33,3 +33,5 @@ spec:
       containers:
       - name: llama-api
         image: ghcr.io/tuna2134/llama-api
+        ports:
+        - containerPort: 8080
