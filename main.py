@@ -5,25 +5,22 @@ from fastapi import FastAPI
 
 
 app = FastAPI()
-model = None
 
 
-@app.on_event("startup")
-async def llama_start():
-    params = llamacpp.gpt_params(
-        './ggml-alpaca-7b-q4.bin',  # model,
-        512,  # ctx_size
-        100,  # n_predict
-        40,  # top_k
-        0.95,  # top_p
-        0.85,  # temp
-        1.30,  # repeat_penalty
-        -1,  # seed
-        8,  # threads
-        64,  # repeat_last_n
-        8,  # batch_size
-    )
-    model = llamacpp.PyLLAMA(params)
+params = llamacpp.gpt_params(
+    './ggml-alpaca-7b-q4.bin',  # model,
+    512,  # ctx_size
+    100,  # n_predict
+    40,  # top_k
+    0.95,  # top_p
+    0.85,  # temp
+    1.30,  # repeat_penalty
+    -1,  # seed
+    8,  # threads
+    64,  # repeat_last_n
+    8,  # batch_size
+)
+model = llamacpp.PyLLAMA(params)
 
 
 @app.get("/")
