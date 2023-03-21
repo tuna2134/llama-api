@@ -1,0 +1,3 @@
+llamacpp
+fastapi
+uvicorn[standard]
