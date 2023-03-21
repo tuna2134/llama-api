@@ -2,9 +2,14 @@ import sys
 import llamacpp
 
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 
 app = FastAPI()
+
+
+class Item(BaseModel):
+    prompts: str
 
 
 params = llamacpp.gpt_params(
@@ -22,11 +27,11 @@ params = llamacpp.gpt_params(
 )
 
 
-@app.get("/")
-async def llama(promps: str):
+@app.post("/")
+async def llama(item: Item):
     model = llamacpp.PyLLAMA(params)
     model.add_bos()     # Adds "beginning of string" token
-    model.update_input(promps)
+    model.update_input(item.prompts)
     model.print_startup_stats()
     model.prepare_context()
 
