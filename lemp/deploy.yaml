@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: llama-api-svc
+spec:
+  selector:
+    app: llama-api
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llama-api-deployment
+  labels:
+    app: llama-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: llamaapi
+  template:
+    metadata:
+      labels:
+        app: llamaapi
+    spec:
+      containers:
+      - name: llama-api
+        image: ghcr.io/tuna2134/llama-api
